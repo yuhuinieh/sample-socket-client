@@ -1,0 +1,18 @@
+{
+  "semi": true,
+  "tabWidth": 2,
+  "printWidth": 80,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "jsxBracketSameLine": true,
+  "overrides": [
+    {
+      "files": "*.scss",
+      "options": { "singleQuote": false }
+    },
+    {
+      "files": "tailwind.config.cjs",
+      "options": { "singleQuote": false, "printWidth": 80, "trailingComma": "es5" }
+    }
+  ]
+}
