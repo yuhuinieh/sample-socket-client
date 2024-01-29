@@ -2,7 +2,7 @@ import { Suspense, lazy } from 'react';
 import PublicLayout from '@/layouts/Public';
 import PrivateLayout from '@/layouts/Private';
 import Page404 from '@/pages/Page404';
-import Login from '@/pages/Logins';
+import Login from '@/pages/Login';
 import Register from '@/pages/Register';
 
 // Page
