@@ -8,7 +8,7 @@ type Inputs = {
   password: string;
 };
 
-const Logins = () => {
+const Login = () => {
   const [_, setCookie] = useCookies(['token']);
   const { register, handleSubmit } = useForm<Inputs>();
 
@@ -96,4 +96,4 @@ const Logins = () => {
   );
 };
 
-export default Logins;
+export default Login;
