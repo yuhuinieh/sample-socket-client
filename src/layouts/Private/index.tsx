@@ -4,6 +4,7 @@ import { useSetAtom } from 'jotai';
 import { useCookies } from 'react-cookie';
 import { getUser } from '@/service/api.service';
 import { userAtom } from '@/states/userAtom';
+import { Toaster } from '@/components/ui/toaster';
 import Header from './Header';
 
 const Private = () => {
@@ -32,6 +33,7 @@ const Private = () => {
       <main className="mt-[68px]">
         <Outlet />
       </main>
+      <Toaster />
     </>
   );
 };

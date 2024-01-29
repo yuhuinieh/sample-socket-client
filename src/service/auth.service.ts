@@ -2,6 +2,10 @@ import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
+export type ErrorResponse = {
+  message: string;
+};
+
 type LoginPayload = {
   username: string;
   password: string;
@@ -22,7 +26,7 @@ export function login(credentials: LoginPayload) {
       .catch((err) => {
         const statusCode = err.response.status;
         if (statusCode === 400 || statusCode === 401 || statusCode === 422) {
-          reject(err.response.data);
+          reject(err.response.data as ErrorResponse);
         }
       });
   });

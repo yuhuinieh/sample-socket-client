@@ -24,6 +24,8 @@
   "plugins": ["react", "react-hooks", "@typescript-eslint", "tailwindcss"],
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "tailwindcss/no-custom-classname": "off"
+    "tailwindcss/no-custom-classname": "off",
+    "react/prop-types": "off",
+    "@typescript-eslint/no-unused-vars": "off"
   }
 }
