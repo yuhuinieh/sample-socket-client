@@ -54,21 +54,19 @@ const SockectProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const handleEventOnlineUsers = (data: OnlineUsersType[]) => {
-    if (!socket) return;
     setOnlineUsers(data);
   };
 
   const handleEventNewOnlineUsers = (data: OnlineUsersType) => {
-    if (!socket) return;
     setOnlineUsers((current) => [...current, data]);
-    // const users = onlineUsers;
-    // users.push(data);
-    // setOnlineUsers(users);
   };
 
   const handleEventAllMessages = (data: ChatMessageType[]) => {
-    if (!socket) return;
     setChatMessages(data);
+  };
+
+  const handleEventNewMessages = (data: ChatMessageType) => {
+    setChatMessages((current) => [...current, data]);
   };
 
   useEffect(() => {
@@ -92,6 +90,7 @@ const SockectProvider: React.FC<{ children: React.ReactNode }> = ({
     socket.on(SocketEventType.OnlineUsers, handleEventOnlineUsers);
     socket.on(SocketEventType.NewOnlineUser, handleEventNewOnlineUsers);
     socket.on(SocketEventType.AllMessage, handleEventAllMessages);
+    socket.on(SocketEventType.NewMessage, handleEventNewMessages);
     socket.on(SocketEventType.Disconnect, onDisconnect);
   }, [socket, user]);
 

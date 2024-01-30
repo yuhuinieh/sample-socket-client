@@ -9,9 +9,9 @@ export enum SocketEmitEventType {
 export enum SocketEventType {
   Connect = 'connect',
   Disconnect = 'disconnect',
-  AllMessage = 'allMessage',
   OnlineUsers = 'onlineUsers',
   NewOnlineUser = 'newOnlineUser',
+  AllMessage = 'allMessage',
   NewMessage = 'newMessage',
 }
 
@@ -26,5 +26,5 @@ export type ChatMessageType = {
   username: string;
   nickname: string;
   message: string;
-  created_at?: string;
+  created_at: string;
 };

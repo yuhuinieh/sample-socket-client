@@ -8,12 +8,13 @@ type ChatMessageInputs = {
   message: string;
 };
 const SendMessage: React.FC = () => {
-  const { register, handleSubmit } = useForm<ChatMessageInputs>();
+  const { register, handleSubmit, reset } = useForm<ChatMessageInputs>();
   const { onSendMessage } = useContext(SockectContext);
 
   const onSubmit: SubmitHandler<ChatMessageInputs> = (data) => {
     // 傳送訊息
     onSendMessage(data.message);
+    reset();
   };
 
   return (

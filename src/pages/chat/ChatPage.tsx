@@ -6,7 +6,7 @@ const ChatPage = () => {
   return (
     <>
       <ChatSideMenu />
-      <div className="grid w-full grid-cols-1 content-between p-4">
+      <div className="grid w-full grid-cols-1 content-between gap-4 p-4">
         <ChatMessageList />
         <SendMessage />
       </div>
