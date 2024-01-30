@@ -70,7 +70,16 @@
   * {
     @apply border-border;
   }
+  html,
+  body {
+    height: 100%;
+  }
   body {
     @apply bg-background text-foreground;
+    /* display: flex;
+    flex-direction: column; */
+  }
+  #root {
+    @apply h-screen;
   }
 }

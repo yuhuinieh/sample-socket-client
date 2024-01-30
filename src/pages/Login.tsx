@@ -16,7 +16,12 @@ const Login = () => {
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     return login(data)
-      .then(() => setCookie('isAuth', true))
+      .then(() => {
+        setCookie('isAuth', true);
+        toast({
+          title: '登入成功',
+        });
+      })
       .catch((error: ErrorResponse) => {
         setCookie('isAuth', false);
         toast({

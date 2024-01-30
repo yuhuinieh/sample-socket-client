@@ -28,13 +28,13 @@ const Private = () => {
   if (!isAuth) return <Navigate to="/login"></Navigate>;
 
   return (
-    <>
+    <div className="flex h-full">
       <Header />
-      <main className="mt-[68px]">
+      <main className="mt-[68px] flex w-full">
         <Outlet />
       </main>
       <Toaster />
-    </>
+    </div>
   );
 };
 

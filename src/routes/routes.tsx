@@ -4,9 +4,10 @@ import PrivateLayout from '@/layouts/Private';
 import Page404 from '@/pages/Page404';
 import Login from '@/pages/Login';
 import Register from '@/pages/Register';
+import SockectProvider from '@/contexts/SockectContext';
 
 // Page
-const Chat = lazy(async () => import('@/pages/Chat'));
+const Chat = lazy(async () => import('@/pages/chat'));
 
 const routes = [
   {
@@ -40,7 +41,11 @@ const routes = [
     children: [
       {
         path: '/chat',
-        element: <Chat />,
+        element: (
+          <SockectProvider>
+            <Chat />
+          </SockectProvider>
+        ),
       },
     ],
   },

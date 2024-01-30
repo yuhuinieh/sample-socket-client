@@ -1,3 +1,4 @@
+import { useToast } from '@/components/ui/use-toast';
 import { logout } from '@/service/auth.service';
 import { userAtom } from '@/states/userAtom';
 import { useAtomValue } from 'jotai';
@@ -6,15 +7,15 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
   const user = useAtomValue(userAtom);
-  const [cookies, setCookie] = useCookies(['isAuth']);
+  const [_, setCookie] = useCookies(['isAuth']);
+  const { toast } = useToast();
 
   const handleLogout = async () => {
-    try {
-      await logout();
-      setCookie('isAuth', false);
-    } catch (error) {
-      return cookies;
-    }
+    await logout();
+    setCookie('isAuth', false);
+    toast({
+      title: '登出成功',
+    });
   };
 
   return (
@@ -33,7 +34,7 @@ const Header = () => {
           </span>
         </Link>
         <div className="flex items-center space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
-          <div className="mr-4 dark:text-white">{user?.nickname}</div>
+          <div className="mr-4 dark:text-white">Hi, {user?.nickname}</div>
           <button
             type="button"
             className="rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
