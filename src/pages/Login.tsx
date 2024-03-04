@@ -3,6 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { ErrorResponse, login } from '@/service/auth.service';
 import { useCookies } from 'react-cookie';
 import { useToast } from '@/components/ui/use-toast';
+import { encryptData } from '@/lib/encryption';
 
 type Inputs = {
   username: string;
@@ -14,8 +15,13 @@ const Login = () => {
   const { register, handleSubmit } = useForm<Inputs>();
   const { toast } = useToast();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    return login(data)
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const chiper = await encryptData(data.password);
+
+    return login({
+      username: data.username,
+      password: chiper!
+    })
       .then(() => {
         setCookie('isAuth', true);
         toast({

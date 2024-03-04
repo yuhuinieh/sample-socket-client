@@ -76,3 +76,28 @@ export function logout() {
       });
   });
 }
+
+
+type KeyRespond = {
+  message: string;
+  publicKey: string;
+};
+type KeyPayload = {
+  publicKey: string
+}
+export function exchangeKeys(key: KeyPayload) {
+  return new Promise<KeyRespond>((resolve, reject) => {
+    axios
+      .post<KeyRespond>(API_URL + '/api/exchangekeys', key, { withCredentials: true })
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        const statusCode = err.response.status;
+        if (statusCode === 400 || statusCode === 401 || statusCode === 422) {
+          reject(err.response.data);
+        }
+      });
+  });
+}
